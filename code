@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+body {
+  background-color: black;
+  color: white;
+}
+
+.pre-centrado {
+  text-align: center;
+  border: 3px solid red;
+  box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
+}
+
+.titulo-centrado {
+  text-align: center;
+}
+</style>
+<title>Long time not to see you</title>
+</head>
+<body>
+  <h1 class="titulo-centrado"></h1>
+  <header>
+    <h1 class="titulo-centrado">Scam alert</h1>
+  </header>
+  <main>
+    <pre class="pre-centrado">
+      <p> 
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHEzaGY3eGlhb3U3MmNyMXd0c3Y5ZG1mMG
+                  dpbWFrZnBya2NmMXgweCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/UUZv8FkyVke9OYv16e/giphy.webp" 
+                  alt="Descripción del GIF">
+      </p>
+    </main>
+  </pre>
+  <footer>
+    <h1 class="titulo-centrado">worth it that</h1>
+  </footer>
+</body>
+</html>
