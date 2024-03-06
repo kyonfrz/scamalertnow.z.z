@@ -74,12 +74,12 @@ body {
     <h1 class="titulo-centrado">You really came in to waste your time</h1>
   </footer>
   <script>
-    var numeroSecreto = Math.floor(Math.random() * 300) + 1;
+    var numeroSecreto = Math.floor(Math.random() * 3) + 1;
 
     function adivinarNumero() {
       var numero = document.getElementById('numero').value;
       if (numero == numeroSecreto) {
-        document.getElementById('mensaje').textContent = '¡congratulations for getting this, far now continue with your boring life. What do you expect from this game Im not rockstar games!';
+        document.getElementById('mensaje').textContent = 'Congratulations for getting this, far now continue with your life and do something great. What do you expect from this game Im not rockstar games but maybe this little challenge will inspire you to reach for bigger goals.';
         document.getElementById('imagenGanador').style.display = 'block';
       } else if (numero < numeroSecreto) {
         document.getElementById('mensaje').textContent = '¡very low seriously keep trying this!';
