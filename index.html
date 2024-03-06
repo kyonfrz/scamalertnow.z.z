@@ -50,12 +50,34 @@ body {
   50% { box-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff; }
   100% { box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff; }
 }
+
+.contador-partidas {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  background-color: #808080;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.boton-reset {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 </style>
 <title>Long time not to see you</title>
 </head>
-<body>
+<body onload="startTimer()">
   <header>
     <h1 class="titulo-centrado">The game you didn't expect to find here</h1>
+    <p id="currentDateTime" style="text-align: center;"></p>
   </header>
   <main>
     <div style="text-align: center;">
@@ -64,19 +86,46 @@ body {
     <div class="cuadro-blanco">
       <h2>Try to guess a number from 1 to 300 </h2>
       <p>(I don't expect anything from you)</p>
-      <input id="numero" class="cuadro-entrada" type="number" min="1" max="300">
+      <input id="numero" class="cuadro-entrada" type="number" min="1" max="300" onkeydown="if (event.key === 'Enter') adivinarNumero()">
       <button onclick="adivinarNumero()">Guess</button>
+      <button id="resetButton" class="boton-reset" onclick="resetGame()">Reset</button>
       <p id="mensaje"></p>
       <img id="imagenGanador" class="imagen-ganador" src="https://preview.redd.it/282qwfdv3jj81.jpg?width=824&format=pjpg&auto=webp&s=904d30e5475bb419a747867a2abeeeed6a6882a3" alt="Ganaste">
     </div>
   </main>
   <footer>
     <h1 class="titulo-centrado">You really came in to waste your time</h1>
+    <p id="timer" class="titulo-centrado"></p>
   </footer>
+  <div id="contadorPartidas" class="contador-partidas">Attempts made: 0</div>
   <script>
     var numeroSecreto = Math.floor(Math.random() * 3) + 1;
+    var startTime = new Date();
+    var partidasJugadas = 0;
+
+    function startTimer() {
+      setInterval(updateTimer, 1000);
+      setInterval(updateDateTime, 1000);
+    }
+
+    function updateTimer() {
+      var currentTime = new Date();
+      var timeElapsed = Math.floor((currentTime - startTime) / 1000);
+      var hours = Math.floor(timeElapsed / 3600);
+      timeElapsed %= 3600;
+      var minutes = Math.floor(timeElapsed / 60);
+      var seconds = timeElapsed % 60;
+      document.getElementById('timer').textContent = "Time elapsed: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+    }
+
+    function updateDateTime() {
+      var currentDateTime = new Date();
+      document.getElementById('currentDateTime').textContent = "Date: " + currentDateTime.toLocaleDateString() + " | Time: " + currentDateTime.toLocaleTimeString();
+    }
 
     function adivinarNumero() {
+      partidasJugadas++;
+      document.getElementById('contadorPartidas').textContent = "Attempts made: " + partidasJugadas;
       var numero = document.getElementById('numero').value;
       if (numero == numeroSecreto) {
         document.getElementById('mensaje').textContent = 'Congratulations for getting this, far now continue with your life and do something great. What do you expect from this game Im not rockstar games but maybe this little challenge will inspire you to reach for bigger goals.';
@@ -87,7 +136,13 @@ body {
         document.getElementById('mensaje').textContent = '¡too high dont think you are anything special for going up so high!';
       }
     }
+
+    function resetGame() {
+      numeroSecreto = Math.floor(Math.random() * 3) + 1;
+      document.getElementById('numero').value = '';
+      document.getElementById('mensaje').textContent = '';
+      document.getElementById('imagenGanador').style.display = 'none';
+    }
   </script>
 </body>
 </html>
-
