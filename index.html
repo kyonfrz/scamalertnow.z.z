@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<!--
-Created using JS Bin
-http://jsbin.com
-
-Copyright (c) 2024 by anonymous (http://jsbin.com/qovivopafe/1/edit)
-
-Released under the MIT license: http://jsbin.mit-license.org
--->
-<meta name="robots" content="noindex">
 <html>
 <head>
 <style> 
@@ -17,7 +8,7 @@ body {
 }
 
 .pre-centrado {
-  text-align: center;
+  display: inline-block;
   border: 3px solid red;
   box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
 }
@@ -25,25 +16,78 @@ body {
 .titulo-centrado {
   text-align: center;
 }
+
+.cuadro-blanco {
+  background-color: brown;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+  color: #ffffff;
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+}
+
+.cuadro-entrada {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 4px;
+}
+
+.imagen-ganador {
+  display: none;
+  width: 30%;
+  height: auto;
+  border: 3px solid #ffffff;
+  animation: neon 1s infinite;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes neon {
+  0% { box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff; }
+  50% { box-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff; }
+  100% { box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff; }
+}
 </style>
 <title>Long time not to see you</title>
 </head>
 <body>
-  <h1 class="titulo-centrado"></h1>
   <header>
-    <h1 class="titulo-centrado">Scam alert</h1>
+    <h1 class="titulo-centrado">The game you didn't expect to find here</h1>
   </header>
   <main>
-    <pre class="pre-centrado">
-      <p> 
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHEzaGY3eGlhb3U3MmNyMXd0c3Y5ZG1mMG
-                  dpbWFrZnBya2NmMXgweCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/UUZv8FkyVke9OYv16e/giphy.webp" 
-                  alt="Descripción del GIF">
-      </p>
-    </main>
-  </pre>
+    <div style="text-align: center;">
+      <img class="pre-centrado" src="https://media3.giphy.com/media/3e4j6cb43FlWVITDBk/giphy.gif" alt="Descripción del GIF">
+    </div>
+    <div class="cuadro-blanco">
+      <h2>Try to guess a number from 1 to 300 </h2>
+      <p>(I don't expect anything from you)</p>
+      <input id="numero" class="cuadro-entrada" type="number" min="1" max="300">
+      <button onclick="adivinarNumero()">Guess</button>
+      <p id="mensaje"></p>
+      <img id="imagenGanador" class="imagen-ganador" src="https://preview.redd.it/282qwfdv3jj81.jpg?width=824&format=pjpg&auto=webp&s=904d30e5475bb419a747867a2abeeeed6a6882a3" alt="Ganaste">
+    </div>
+  </main>
   <footer>
-    <h1 class="titulo-centrado">worth it that</h1>
+    <h1 class="titulo-centrado">You really came in to waste your time</h1>
   </footer>
+  <script>
+    var numeroSecreto = Math.floor(Math.random() * 300) + 1;
+
+    function adivinarNumero() {
+      var numero = document.getElementById('numero').value;
+      if (numero == numeroSecreto) {
+        document.getElementById('mensaje').textContent = '¡congratulations for getting this, far now continue with your boring life. What do you expect from this game Im not rockstar games!';
+        document.getElementById('imagenGanador').style.display = 'block';
+      } else if (numero < numeroSecreto) {
+        document.getElementById('mensaje').textContent = '¡very low seriously keep trying this!';
+      } else {
+        document.getElementById('mensaje').textContent = '¡too high dont think you are anything special for going up so high!';
+      }
+    }
+  </script>
 </body>
 </html>
+
